@@ -88,6 +88,7 @@ $ gulp
 With this, you will have 2 files on dist folder:
 
 -`<<your project name>>.js`: builded version for dev
+
 -`<<your project name>>.min.js`: builded version for production
 
 ## License
