@@ -1,0 +1,42 @@
+{
+  "name": "generator-angmodule",
+  "version": "3.2.0",
+  "description": "Yeoman generator to create an AngularJS module with partial generators for directive, service and controller",
+  "license": "MIT",
+  "main": "app/index.js",
+  "repository": "InfinitePress/generator-angularjs-module",
+  "author": {
+    "name": "Clovis Chedid",
+    "email": "coichedid@gmail.com",
+    "url": "https://github.com/coichedid"
+  },
+  "engines": {
+    "node": ">=0.10.0"
+  },
+  "scripts": {
+    "test": "mocha"
+  },
+  "keywords": [
+    "yeoman-generator",
+    "angular",
+    "angularjs",
+    "module",
+    "generator",
+    "code",
+    "directive",
+    "service",
+    "controller"
+  ],
+  "dependencies": {
+    "chalk": "^0.5.1",
+    "lodash": "^2.4.1",
+    "yeoman-generator": "^0.17.0",
+    "yosay": "^0.3.0"
+  },
+  "devDependencies": {
+    "mocha": "*"
+  },
+  "peerDependencies": {
+    "yo": ">=1.0.0"
+  }
+}
