@@ -20,7 +20,7 @@ var AngularjsLibraryGenerator = yeoman.generators.Base.extend({
 
     // Have Yeoman greet the user.
     this.log(yosay(
-      'Welcome to the AngularJS library generator!'
+      'Welcome to the angmodule AngularJS modules generator!'
     ));
 
     var prompts = [
