@@ -39,4 +39,10 @@ describe('<%= config.yourModule.orginal %>', function() {
   });
   <% } %>
 
+  <% if(config.includeModuleControllers) { %>
+    it('should load controllers module', function() {
+      expect(hasModule('<%= config.yourModule.camelized %>.controllers')).to.be.ok;
+    });
+  <% } %>
+
 });

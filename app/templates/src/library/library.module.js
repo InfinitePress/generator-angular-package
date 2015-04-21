@@ -10,19 +10,43 @@
           debug: true
       });
 
-  // Modules<% if (config.includeModuleDirectives){ %>
-  angular.module('<%= config.yourModule.camelized %>.directives', []);<% } %><% if (config.includeModuleFilters){ %>
-  angular.module('<%= config.yourModule.camelized %>.filters', []);<% } %><% if (config.includeModuleServices){ %>
-  angular.module('<%= config.yourModule.camelized %>.services', []);<% } %>
+  // Modules
+  <% if (config.includeModuleDirectives){ %>
+  angular.module('<%= config.yourModule.camelized %>.directives', []);
+  <% } %>
+  <% if (config.includeModuleFilters){ %>
+  angular.module('<%= config.yourModule.camelized %>.filters', []);
+  <% } %>
+  <% if (config.includeModuleServices){ %>
+  angular.module('<%= config.yourModule.camelized %>.services', []);
+  <% } %>
+  <% if (config.includeModuleControllers){ %>
+    angular.module('<%= config.yourModule.camelized %>.controllers', []);
+  <% } %>
   angular.module('<%= config.yourModule.camelized %>',
       [
-          '<%= config.yourModule.camelized %>.config'<% if (config.includeModuleDirectives){ %>,
-          '<%= config.yourModule.camelized %>.directives'<% } %><% if (config.includeModuleFilters){ %>,
-          '<%= config.yourModule.camelized %>.filters'<% } %><% if (config.includeModuleServices){ %>,
-          '<%= config.yourModule.camelized %>.services'<% } %><% if (config.includeAngularModuleResource){ %>,
-          'ngResource'<% } %><% if (config.includeAngularModuleCookies){ %>,
-          'ngCookies'<% } %><% if (config.includeAngularModuleSanitize){ %>,
-          'ngSanitize'<% } %>
+          '<%= config.yourModule.camelized %>.config'
+          <% if (config.includeModuleDirectives){ %>
+            ,'<%= config.yourModule.camelized %>.directives'
+          <% } %>
+          <% if (config.includeModuleFilters){ %>
+            ,'<%= config.yourModule.camelized %>.filters'
+          <% } %>
+          <% if (config.includeModuleServices){ %>
+            ,'<%= config.yourModule.camelized %>.services'
+          <% } %>
+          <% if (config.includeModuleControllers){ %>
+            ,'<%= config.yourModule.camelized %>.controllers'
+          <% } %>
+          <% if (config.includeAngularModuleResource){ %>
+            ,'ngResource'
+          <% } %>
+          <% if (config.includeAngularModuleCookies){ %>
+            ,'ngCookies'
+          <% } %>
+          <% if (config.includeAngularModuleSanitize){ %>
+            ,'ngSanitize'
+          <% } %>
       ]);
 
 })(angular);
