@@ -1,6 +1,6 @@
 'use strict';
 
-describe('<%= config.libraryName.orginal %>', function() {
+describe('<%= config.yourModule.orginal %>', function() {
 
   var module;
   var dependencies;
@@ -13,29 +13,29 @@ describe('<%= config.libraryName.orginal %>', function() {
   beforeEach(function() {
 
   // Get module
-  module = angular.module('<%= config.libraryName.camelized %>');
+  module = angular.module('<%= config.yourModule.camelized %>');
   dependencies = module.requires;
   });
 
   it('should load config module', function() {
-    expect(hasModule('<%= config.libraryName.camelized %>.config')).to.be.ok;
+    expect(hasModule('<%= config.yourModule.camelized %>.config')).to.be.ok;
   });
 
   <% if(config.includeModuleFilters) { %>
   it('should load filters module', function() {
-    expect(hasModule('<%= config.libraryName.camelized %>.filters')).to.be.ok;
+    expect(hasModule('<%= config.yourModule.camelized %>.filters')).to.be.ok;
   });
   <% } %>
 
   <% if(config.includeModuleDirectives) { %>
   it('should load directives module', function() {
-    expect(hasModule('<%= config.libraryName.camelized %>.directives')).to.be.ok;
+    expect(hasModule('<%= config.yourModule.camelized %>.directives')).to.be.ok;
   });
   <% } %>
 
   <% if(config.includeModuleServices) { %>
   it('should load services module', function() {
-    expect(hasModule('<%= config.libraryName.camelized %>.services')).to.be.ok;
+    expect(hasModule('<%= config.yourModule.camelized %>.services')).to.be.ok;
   });
   <% } %>
 
