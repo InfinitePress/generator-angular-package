@@ -1,2 +1,2 @@
-# <%= config.libraryName.original %>
+# <%= config.yourModule.original %>
 

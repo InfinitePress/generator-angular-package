@@ -16,7 +16,7 @@ var jshint = require('gulp-jshint');
 var rootDirectory = path.resolve('./');
 
 // Source directory for build process
-var sourceDirectory = path.join(rootDirectory, './src');
+var sourceDirectory = path.join(rootDirectory, './modules');
 
 var sourceFiles = [
 
@@ -36,10 +36,10 @@ var lintFiles = [
 gulp.task('build', function() {
   gulp.src(sourceFiles)
     .pipe(plumber())
-    .pipe(concat('<%= config.libraryName.dasherized %>.js'))
+    .pipe(concat('<%= config.yourModule.dasherized %>.js'))
     .pipe(gulp.dest('./dist/'))
     .pipe(uglify())
-    .pipe(rename('<%= config.libraryName.dasherized %>.min.js'))
+    .pipe(rename('<%= config.yourModule.dasherized %>.min.js'))
     .pipe(gulp.dest('./dist'));
 });
 

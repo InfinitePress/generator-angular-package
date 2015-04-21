@@ -1,5 +1,5 @@
 {
-  "name": "<%= config.libraryName.slugified %>",
+  "name": "<%= config.yourModule.slugified %>",
   "version": "0.1.0",
   "authors": [
     {
@@ -7,7 +7,7 @@
       "email": "<%= config.author.email %>"
     }
   ],
-  "main": ["dist/<%= config.libraryName.slugified %>.js"],
+  "main": ["dist/<%= config.yourModule.slugified %>.js"],
   "ignore": [
     "src",
     "test",

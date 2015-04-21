@@ -1,5 +1,5 @@
 {
-  "name": "<%= config.libraryName.dasherized %>",
+  "name": "<%= config.yourModule.dasherized %>",
   "version": "0.1.0",
   "author": {
     "name": "<%= config.author.name %>",
