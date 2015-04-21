@@ -5,21 +5,21 @@
   // before all nested files are concatenated by Gulp
 
   // Config
-  angular.module('<%= config.libraryName.camelized %>.config', [])
-      .value('<%= config.libraryName.camelized %>.config', {
+  angular.module('<%= config.yourModule.camelized %>.config', [])
+      .value('<%= config.yourModule.camelized %>.config', {
           debug: true
       });
 
   // Modules<% if (config.includeModuleDirectives){ %>
-  angular.module('<%= config.libraryName.camelized %>.directives', []);<% } %><% if (config.includeModuleFilters){ %>
-  angular.module('<%= config.libraryName.camelized %>.filters', []);<% } %><% if (config.includeModuleServices){ %>
-  angular.module('<%= config.libraryName.camelized %>.services', []);<% } %>
-  angular.module('<%= config.libraryName.camelized %>',
+  angular.module('<%= config.yourModule.camelized %>.directives', []);<% } %><% if (config.includeModuleFilters){ %>
+  angular.module('<%= config.yourModule.camelized %>.filters', []);<% } %><% if (config.includeModuleServices){ %>
+  angular.module('<%= config.yourModule.camelized %>.services', []);<% } %>
+  angular.module('<%= config.yourModule.camelized %>',
       [
-          '<%= config.libraryName.camelized %>.config'<% if (config.includeModuleDirectives){ %>,
-          '<%= config.libraryName.camelized %>.directives'<% } %><% if (config.includeModuleFilters){ %>,
-          '<%= config.libraryName.camelized %>.filters'<% } %><% if (config.includeModuleServices){ %>,
-          '<%= config.libraryName.camelized %>.services'<% } %><% if (config.includeAngularModuleResource){ %>,
+          '<%= config.yourModule.camelized %>.config'<% if (config.includeModuleDirectives){ %>,
+          '<%= config.yourModule.camelized %>.directives'<% } %><% if (config.includeModuleFilters){ %>,
+          '<%= config.yourModule.camelized %>.filters'<% } %><% if (config.includeModuleServices){ %>,
+          '<%= config.yourModule.camelized %>.services'<% } %><% if (config.includeAngularModuleResource){ %>,
           'ngResource'<% } %><% if (config.includeAngularModuleCookies){ %>,
           'ngCookies'<% } %><% if (config.includeAngularModuleSanitize){ %>,
           'ngSanitize'<% } %>
