@@ -13,35 +13,35 @@ describe('<%= config.yourModule.orginal %>', function() {
   beforeEach(function() {
 
   // Get module
-  module = angular.module('<%= config.yourModule.camelized %>');
+  module = angular.module('<%= config.yourModule.slugified %>');
   dependencies = module.requires;
   });
 
   it('should load config module', function() {
-    expect(hasModule('<%= config.yourModule.camelized %>.config')).to.be.ok;
+    expect(hasModule('<%= config.yourModule.slugified %>.config')).to.be.ok;
   });
 
   <% if(config.includeModuleFilters) { %>
   it('should load filters module', function() {
-    expect(hasModule('<%= config.yourModule.camelized %>.filters')).to.be.ok;
+    expect(hasModule('<%= config.yourModule.slugified %>.filters')).to.be.ok;
   });
   <% } %>
 
   <% if(config.includeModuleDirectives) { %>
   it('should load directives module', function() {
-    expect(hasModule('<%= config.yourModule.camelized %>.directives')).to.be.ok;
+    expect(hasModule('<%= config.yourModule.slugified %>.directives')).to.be.ok;
   });
   <% } %>
 
   <% if(config.includeModuleServices) { %>
   it('should load services module', function() {
-    expect(hasModule('<%= config.yourModule.camelized %>.services')).to.be.ok;
+    expect(hasModule('<%= config.yourModule.slugified %>.services')).to.be.ok;
   });
   <% } %>
 
   <% if(config.includeModuleControllers) { %>
     it('should load controllers module', function() {
-      expect(hasModule('<%= config.yourModule.camelized %>.controllers')).to.be.ok;
+      expect(hasModule('<%= config.yourModule.slugified %>.controllers')).to.be.ok;
     });
   <% } %>
 

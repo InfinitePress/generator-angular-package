@@ -140,9 +140,9 @@ var AngModuleGenerator = yeoman.generators.Base.extend({
         includeAngularModuleSanitize: props.includeAngularModuleSanitize
       };
 
-      this.props.moduleDirectory = 'modules' + '/' + this.props.yourModule.dasherized;
-      this.props.moduleUnitTestDirectory = 'test' + '/unit/' + this.props.yourModule.dasherized;
-      this.props.moduleUnitE2eDirectory = 'test' + '/e2e/' + this.props.yourModule.dasherized;
+      this.props.moduleDirectory = 'modules' + '/' + this.props.yourModule.slugified;
+      this.props.moduleUnitTestDirectory = 'test' + '/unit/' + this.props.yourModule.slugified;
+      this.props.moduleUnitE2eDirectory = 'test' + '/e2e/' + this.props.yourModule.slugified;
 
       this.config.set('props', this.props);
 
@@ -183,9 +183,9 @@ var AngModuleGenerator = yeoman.generators.Base.extend({
         this.mkdir(this.props.moduleUnitTestDirectory + '/controllers');
       }
 
-      this.template('src/library/library.module.js', this.props.moduleDirectory + '/' + this.props.yourModule.camelized + '.module.js', {config: this.props});
+      this.template('src/library/library.module.js', this.props.moduleDirectory + '/' + this.props.yourModule.slugified + '.module.js', {config: this.props});
 
-      this.template('test/unit/library/librarySpec.js', this.props.moduleUnitTestDirectory + '/' + this.props.yourModule.camelized + 'Spec.js', {config: this.props});
+      this.template('test/unit/library/librarySpec.js', this.props.moduleUnitTestDirectory + '/' + this.props.yourModule.slugified + 'Spec.js', {config: this.props});
 
     },
 

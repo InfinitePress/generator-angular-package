@@ -36,10 +36,10 @@ var lintFiles = [
 gulp.task('build', function() {
   gulp.src(sourceFiles)
     .pipe(plumber())
-    .pipe(concat('<%= config.yourModule.dasherized %>.js'))
+    .pipe(concat('<%= config.yourModule.slugified %>.js'))
     .pipe(gulp.dest('./dist/'))
     .pipe(uglify())
-    .pipe(rename('<%= config.yourModule.dasherized %>.min.js'))
+    .pipe(rename('<%= config.yourModule.slugified %>.min.js'))
     .pipe(gulp.dest('./dist'));
 });
 

@@ -6,9 +6,9 @@ var assert = require('yeoman-generator').assert;
 var helpers = require('yeoman-generator').test;
 var os = require('os');
 
-describe('angularjs-library:angular-module', function () {
+describe('generator-angularjs-module', function () {
   before(function (done) {
-    helpers.run(path.join(__dirname, '../angular-module'))
+    helpers.run(path.join(__dirname, '../app'))
       .inDir(path.join(os.tmpdir(), './temp-test'))
       .withOptions({ 'skip-install': true })
       .withPrompt({
