@@ -1,6 +1,6 @@
 {
   "name": "generator-angmodule",
-  "version": "3.2.0",
+  "version": "0.1.0",
   "description": "Yeoman generator to create an AngularJS module with partial generators for directive, service and controller",
   "license": "MIT",
   "main": "app/index.js",
