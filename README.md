@@ -2,7 +2,7 @@
 
 [Yeoman](http://yeoman.io) generator to create AngularJS modules like a library.
 
-[![Build Status](https://travis-ci.org/InfinitePress/generator-angularjs-module.svg)](https://travis-ci.org/InfinitePress/generator-angularjs-module)
+[![Build Status](https://travis-ci.org/InfinitePress/generator-angular-package.svg?branch=master)](https://travis-ci.org/InfinitePress/generator-angular-package)
 
 This generator takes the hard work to make a AngularJS module and gives you time to think in the core functionality of your module.
 Just have to install [yeoman](http://yeoman.io) and than start generating your modules.
