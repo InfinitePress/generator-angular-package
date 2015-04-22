@@ -6,9 +6,9 @@
   "main": "app/index.js",
   "repository": "InfinitePress/generator-angularjs-module",
   "author": {
-    "name": "Clovis Chedid",
-    "email": "coichedid@gmail.com",
-    "url": "https://github.com/coichedid"
+    "name": "InfinitePress",
+    "email": "infinitepress.info@gmail.com",
+    "url": "https://github.com/infinitepress"
   },
   "engines": {
     "node": ">=0.10.0"
