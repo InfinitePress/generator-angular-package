@@ -48,7 +48,7 @@ function runGenerator(generatorType, name, context, promptAnswers, done) {
       return done(err);
     }
 
-    this.app = helpers.createGenerator('angularjs-module:' + generatorType, [
+    this.app = helpers.createGenerator('angular-package:' + generatorType, [
       path.resolve(__dirname, '../generators/' + generatorType)
     ], [name]);
 

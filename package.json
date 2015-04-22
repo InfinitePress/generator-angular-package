@@ -1,10 +1,10 @@
 {
-  "name": "generator-angularjs-module",
+  "name": "generator-angular-package",
   "version": "0.1.0",
   "description": "Yeoman generator to create an AngularJS module with partial generators for directive, service and controller",
   "license": "MIT",
   "main": "app/index.js",
-  "repository": "InfinitePress/generator-angularjs-module",
+  "repository": "InfinitePress/generator-angular-package",
   "author": {
     "name": "InfinitePress",
     "email": "infinitepress.info@gmail.com",
