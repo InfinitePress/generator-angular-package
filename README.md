@@ -16,10 +16,10 @@ Install [yeoman](http://yeoman.io):
 $ npm install -g yo
 ```
 
-Install generator-angmodule:
+Install generator-angularjs-module:
 
 ```sh
-$ npm install -g generator-angmodule
+$ npm install -g generator-angularjs-module
 ```
 
 Create a new project directory:
@@ -32,7 +32,7 @@ $ cd myProject
 Run:
 
 ```sh
-$ yo angmodule
+$ yo angularjs-module
 ```
 Answer the necessary questions to create the boilerplate for your module
 At this point you will get a module structure like this:
@@ -75,9 +75,9 @@ At this point you will get a module structure like this:
 
 To use your module, use the subgenerators commands:
 ```sh
-$ yo angmodule:directive <<directive name>>
-$ yo angmodule:controller <<controller name>>
-$ yo angmodule:service <<service name>>
+$ yo angularjs-module:directive <<directive name>>
+$ yo angularjs-module:controller <<controller name>>
+$ yo angularjs-module:service <<service name>>
 ```
 
 Then you can build your project with
