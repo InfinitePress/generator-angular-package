@@ -3,5 +3,5 @@ node_js:
   - '0.10'
 before_install:
   - currentfolder=${PWD##*/}
-  - if [ "$currentfolder" != 'generator-angularjs-module' ]; then cd .. && eval "mv $currentfolder generator-angularjs-module" && cd generator-angularjs-module; fi
+  - if [ "$currentfolder" != 'generator-angular-package' ]; then cd .. && eval "mv $currentfolder generator-angular-package" && cd generator-angular-package; fi
 
