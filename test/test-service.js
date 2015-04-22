@@ -49,7 +49,7 @@ function runGenerator(generatorType, name, context, promptAnswers, done) {
     }
 
     this.app = helpers.createGenerator('angularjs-module:' + generatorType, [
-      path.resolve(__dirname, '../' + generatorType)
+      path.resolve(__dirname, '../generators/' + generatorType)
     ], [name]);
 
     helpers.mockPrompt(this.app, promptAnswers);

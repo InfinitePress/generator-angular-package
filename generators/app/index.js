@@ -7,7 +7,7 @@ var chalk = require('chalk');
 
 var AngModuleGenerator = yeoman.generators.Base.extend({
   initializing: function () {
-    this.pkg = require('../package.json');
+    this.pkg = require('../../package.json');
 
     // Try to determine the name
     this.argument('appname', { type: String, required: false });
