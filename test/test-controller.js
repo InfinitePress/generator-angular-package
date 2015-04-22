@@ -11,7 +11,7 @@ var temp = require('temp').track();
 var exec = require('child_process').exec;
 var async = require('async');
 
-describe('angularjs-module:controller', function () {
+describe('angular-package:controller', function () {
   beforeEach(function(done) {
     helpers.testDirectory(path.join(__dirname, 'temp'), function(err) {
       if (err) {
