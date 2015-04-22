@@ -11,7 +11,7 @@ var temp = require('temp').track();
 var exec = require('child_process').exec;
 var async = require('async');
 
-describe('angularjs-module:directive', function () {
+describe('ngularjs-module:controller', function () {
   beforeEach(function(done) {
     helpers.testDirectory(path.join(__dirname, 'temp'), function(err) {
       if (err) {
@@ -22,20 +22,18 @@ describe('angularjs-module:directive', function () {
     });
   });
 
-  describe('Generate an AngularJS directive file through the sub-generator', function() {
+  describe('Generate an AngularJS controller file through the sub-generator', function() {
     beforeEach(function(done) {
-      runGenerator('directive',
+      runGenerator('controller',
         'foo',
         this, {
-          'moduleName': 'core',
-          'restrict': ['element','attribute'],
-          'replaceContent': true,
-          'isolateScope': true
+          'moduleName': 'core'
         }, done);
     });
 
     it('should generate an angular directive file', function(done) {
-      assert.file('modules/core/directives/foo.directive.js');
+      assert.file('modules/core/controllers/foo.controller.js');
+      assert.file('test/unit/core/controllers/foo.controller.test.js');
       done();
     });
   });

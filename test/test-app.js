@@ -6,7 +6,7 @@ var assert = require('yeoman-generator').assert;
 var helpers = require('yeoman-generator').test;
 var os = require('os');
 
-describe('generator-angularjs-module', function () {
+describe('angularjs-module', function () {
   before(function (done) {
     helpers.run(path.join(__dirname, '../app'))
       .inDir(path.join(os.tmpdir(), './temp-test'))
@@ -17,12 +17,13 @@ describe('generator-angularjs-module', function () {
       .on('end', done);
   });
 
-  it('creates files', function () {
+  it('creates files', function (done) {
     assert.file([
       'bower.json',
       'package.json',
       '.editorconfig',
       '.jshintrc'
     ]);
+    done();
   });
 });
