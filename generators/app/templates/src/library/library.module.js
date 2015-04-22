@@ -25,28 +25,13 @@
   <% } %>
   angular.module('<%= config.yourModule.slugified %>',
       [
-          '<%= config.yourModule.slugified %>.config'
-          <% if (config.includeModuleDirectives){ %>
-            ,'<%= config.yourModule.slugified %>.directives'
-          <% } %>
-          <% if (config.includeModuleFilters){ %>
-            ,'<%= config.yourModule.slugified %>.filters'
-          <% } %>
-          <% if (config.includeModuleServices){ %>
-            ,'<%= config.yourModule.slugified %>.services'
-          <% } %>
-          <% if (config.includeModuleControllers){ %>
-            ,'<%= config.yourModule.slugified %>.controllers'
-          <% } %>
-          <% if (config.includeAngularModuleResource){ %>
-            ,'ngResource'
-          <% } %>
-          <% if (config.includeAngularModuleCookies){ %>
-            ,'ngCookies'
-          <% } %>
-          <% if (config.includeAngularModuleSanitize){ %>
-            ,'ngSanitize'
-          <% } %>
+        '<%= config.yourModule.slugified %>.config'<% if (config.includeModuleDirectives){ %>,
+        '<%= config.yourModule.slugified %>.directives'<% } %><% if (config.includeModuleFilters){ %>,
+        '<%= config.yourModule.slugified %>.filters'<% } %><% if (config.includeModuleServices){ %>,
+        '<%= config.yourModule.slugified %>.services'<% } %><% if (config.includeAngularModuleResource){ %>,
+        'ngResource'<% } %><% if (config.includeAngularModuleCookies){ %>,
+        'ngCookies'<% } %><% if (config.includeAngularModuleSanitize){ %>,
+        'ngSanitize'<% } %>
       ]);
 
 })(angular);
