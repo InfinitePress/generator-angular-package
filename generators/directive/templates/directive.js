@@ -8,7 +8,7 @@ angular.module('<%= slugifiedModuleName %>').directive('<%= camelizedName %>', [
       template: '<div></div>',
       restrict: '<%= restrict %>',
       replace: '<%= replaceContent %>',
-      scope: <%= scopeType %>,
+      scope: <% if (scopeType == 'parent') {%> false <%} else if (scopeType == 'child') {%> true <%} else if (scopeType == 'isolated') {%>{}<%}%>,
       link: function postLink(scope, element, attrs) {
         // <%= humanizedName %> directive logic
         // ...

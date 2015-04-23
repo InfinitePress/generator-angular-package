@@ -56,15 +56,15 @@ var DirectiveGenerator = yeoman.generators.NamedBase.extend({
         default: false,
         choices: [
           {
-            value:false,
+            value:'parent',
             name: 'Parent scope'
           },
           {
-            value: true,
+            value: 'child',
             name: 'Child scope'
           },
           {
-            value: {},
+            value: 'isolated',
             name: 'Isolated scope'
           }
         ]
