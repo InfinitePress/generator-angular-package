@@ -46,14 +46,28 @@ var DirectiveGenerator = yeoman.generators.NamedBase.extend({
       {
         type: 'confirm',
         name: 'replaceContent',
-        message: 'This directive replaces TAG content?',
+        message: 'This directive replaces TAG?',
         default: false
       },
       {
-        type: 'confirm',
-        name: 'isolateScope',
-        message: 'This directive isolate its scope?',
-        default: false
+        type: 'list',
+        name: 'scopeType',
+        message: 'This directive use which type of scope?',
+        default: false,
+        choices: [
+          {
+            value:false,
+            name: 'Parent scope'
+          },
+          {
+            value: true,
+            name: 'Child scope'
+          },
+          {
+            value: {},
+            name: 'Isolated scope'
+          }
+        ]
       }
     ];
 
@@ -85,7 +99,7 @@ var DirectiveGenerator = yeoman.generators.NamedBase.extend({
       if (this._.contains(props.restrict, 'class'))  this.restrict += 'C';
       if (this._.contains(props.restrict, 'comment'))  this.restrict += 'M';
       this.replaceContent = props.replaceContent?'true':'false';
-      this.isolateScope = props.isolateScope;
+      this.scopeType = props.scopeType;
       done();
     }.bind(this));
   },
