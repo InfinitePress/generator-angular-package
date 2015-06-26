@@ -16,7 +16,7 @@ Install [yeoman](http://yeoman.io):
 $ npm install -g yo
 ```
 
-Install generator-angularjs-module:
+Install generator-angular-package:
 
 ```sh
 $ npm install -g generator-angular-package
@@ -75,9 +75,9 @@ At this point you will get a module structure like this:
 
 To use your module, use the subgenerators commands:
 ```sh
-$ yo angularjs-module:directive <<directive name>>
-$ yo angularjs-module:controller <<controller name>>
-$ yo angularjs-module:service <<service name>>
+$ yo angular-package:directive <<directive name>>
+$ yo angular-package:controller <<controller name>>
+$ yo angular-package:service <<service name>>
 ```
 
 Then you can build your project with
