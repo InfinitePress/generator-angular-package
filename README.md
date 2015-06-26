@@ -19,7 +19,7 @@ $ npm install -g yo
 Install generator-angularjs-module:
 
 ```sh
-$ npm install -g generator-angularjs-module
+$ npm install -g generator-angular-package
 ```
 
 Create a new project directory:
@@ -32,7 +32,7 @@ $ cd myProject
 Run:
 
 ```sh
-$ yo angularjs-module
+$ yo angular-package
 ```
 Answer the necessary questions to create the boilerplate for your module
 At this point you will get a module structure like this:

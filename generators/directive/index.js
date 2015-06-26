@@ -98,7 +98,7 @@ var DirectiveGenerator = yeoman.generators.NamedBase.extend({
       if (this._.contains(props.restrict, 'attribute'))  this.restrict += 'A';
       if (this._.contains(props.restrict, 'class'))  this.restrict += 'C';
       if (this._.contains(props.restrict, 'comment'))  this.restrict += 'M';
-      this.replaceContent = props.replaceContent?'true':'false';
+      this.replaceContent = props.replaceContent?true:false;
       this.scopeType = props.scopeType;
       done();
     }.bind(this));
