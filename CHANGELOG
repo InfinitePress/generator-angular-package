@@ -1,0 +1,17 @@
+- Dec 28, 2015 (lsiden@gmail.com)
+
+* Updated README with instructions for testing.
+* Added "license" field to bower.json and package.json
+* Added "description" field to bower.json and package.json.
+* Added "repository" field to bower.json and package.json.
+* Prompt for description and gitUrl.
+* Create example.html file to demo new component.
+* Support template caching for templateUrl in directive $compile options.
+* Added package.json dependencies to support template caching:
+  - event-stream
+  - gulp-angular-templatecache
+  - karma-ng-html2js-preprocessor
+  - ng-html2js
+* Support concatenation of stylesheets (.css and .scss) for directive modules.
+* Added package.json dependencies to support stylesheet pipeline:
+  - gulp-scss
