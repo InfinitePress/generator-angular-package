@@ -7,6 +7,10 @@ var path = require('path');
 var plumber = require('gulp-plumber');
 var runSequence = require('run-sequence');
 var jshint = require('gulp-jshint');
+var templateCache = require('gulp-angular-templatecache');
+var scss = require('gulp-scss');
+var concatCss = require('gulp-concat-css');
+var eventStream = require('event-stream');
 
 /**
  * File patterns
@@ -27,14 +31,30 @@ var sourceFiles = [
   path.join(sourceDirectory, '/**/*.js')
 ];
 
+var templates = [
+  path.join(sourceDirectory, '/**/*.tpl.html')
+];
+
+var stylesheets = [
+  path.join(sourceDirectory, '/**/*.css'),
+  path.join(sourceDirectory, '/**/*.scss')
+];
+
 var lintFiles = [
   'gulpfile.js',
   // Karma configuration
   'karma-*.conf.js'
 ].concat(sourceFiles);
 
+function getTemplateCache() {
+  return gulp.src(templates)
+  .pipe(templateCache({
+    module: '<%= config.yourModule.slugified %>.directives'
+  }));
+}
+
 gulp.task('build', function() {
-  gulp.src(sourceFiles)
+  return eventStream.merge(gulp.src(sourceFiles), getTemplateCache())
     .pipe(plumber())
     .pipe(concat('<%= config.yourModule.slugified %>.js'))
     .pipe(gulp.dest('./dist/'))
@@ -43,20 +63,27 @@ gulp.task('build', function() {
     .pipe(gulp.dest('./dist'));
 });
 
+gulp.task('build-stylesheets', function() {
+  return gulp.src(stylesheets)
+  // .pipe(scss({ bundleExec: true }))
+  .pipe(scss())
+  .pipe(concatCss('<%= config.yourModule.slugified %>.css'))
+  .pipe(gulp.dest('./dist'));
+});
+
 /**
  * Process
  */
 gulp.task('process-all', function (done) {
-  runSequence('jshint', 'test-src', 'build', done);
+  return runSequence('jshint', 'test-src', 'build', done);
 });
 
 /**
  * Watch task
  */
 gulp.task('watch', function () {
-
-  // Watch JavaScript files
-  gulp.watch(sourceFiles, ['process-all']);
+  gulp.watch([sourceFiles, templates], ['process-all']);
+  gulp.watch([stylesheets], ['build-stylesheets']);
 });
 
 /**
@@ -101,5 +128,5 @@ gulp.task('test-dist-minified', function (done) {
 });
 
 gulp.task('default', function () {
-  runSequence('process-all', 'watch');
+  runSequence('process-all', 'build-stylesheets', 'watch');
 });

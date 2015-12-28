@@ -12,6 +12,7 @@ var AngModuleGenerator = yeoman.generators.Base.extend({
     // Try to determine the name
     this.argument('appname', { type: String, required: false });
     this.appname = this.appname || path.basename(process.cwd());
+    this.description = 'This Angular components does ...';
   },
 
   prompting: function () {
@@ -61,6 +62,31 @@ var AngModuleGenerator = yeoman.generators.Base.extend({
         default: this.appname
       },
       {
+        type: 'input',
+        name: 'description',
+        message: 'One-line description of your module:',
+        validate: function (input) {
+          if (/.+/.test(input)) {
+            return true;
+          }
+          return 'Please enter a brief description of your module';
+        },
+        default: this.description
+      },
+      {
+        type: 'input',
+        name: 'gitUrl',
+        message: 'Your project\s Git URL:',
+        validate: function (input) {
+          if (/.+\..+/.test(input)) {
+            return true;
+          }
+          return 'Please enter a URL';
+        },
+        store: true,
+        default: ''
+      },
+      {
         type: 'confirm',
         name: 'includeDirectives',
         message: 'Would you like to include a directives folder?',
@@ -107,6 +133,10 @@ var AngModuleGenerator = yeoman.generators.Base.extend({
     this.prompt(prompts, function (props) {
 
       this.props = {
+
+        moduleName: props.moduleName,
+        description: props.description,
+        gitUrl: props.gitUrl,
 
         author: {
           name: props.author,
@@ -251,6 +281,12 @@ var AngModuleGenerator = yeoman.generators.Base.extend({
       this.copy('jshintrc', '.jshintrc');
       this.copy('gitignore', '.gitignore');
       this.copy('travis.yml', '.travis.yml');
+    },
+
+    createExampleHtml: function createExampleHtml() {
+      this.template('example.html', 'example.html', {
+        appName: this.props.yourModule.slugified
+      });
     }
 
 },
