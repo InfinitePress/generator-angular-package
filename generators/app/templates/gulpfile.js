@@ -48,9 +48,10 @@ var lintFiles = [
 
 function getTemplateCache() {
   return gulp.src(templates)
-  .pipe(templateCache({
-    module: '<%= config.yourModule.slugified %>.directives'
-  }));
+    .pipe(plumber())
+    .pipe(templateCache({
+      module: '<%= config.yourModule.slugified %>.directives'
+    }));
 }
 
 gulp.task('build', function() {
@@ -64,11 +65,13 @@ gulp.task('build', function() {
 });
 
 gulp.task('build-stylesheets', function() {
-  return gulp.src(stylesheets)
-  // .pipe(scss({ bundleExec: true }))
-  .pipe(scss())
-  .pipe(concatCss('<%= config.yourModule.slugified %>.css'))
-  .pipe(gulp.dest('./dist'));
+  console.log(stylesheets)
+    return gulp.src(stylesheets)
+    .pipe(plumber())
+    // .pipe(scss({ bundleExec: true }))
+    .pipe(scss())
+    .pipe(concatCss('<%= config.yourModule.slugified %>.css'))
+    .pipe(gulp.dest('./dist'));
 });
 
 /**
