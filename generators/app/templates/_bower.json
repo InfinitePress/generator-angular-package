@@ -9,10 +9,12 @@
   ],
   "main": ["dist/<%= config.yourModule.slugified %>.js"],
   "ignore": [
+    "*.*",
+    "bower",
+    "modules",
+    "node_modules",
     "src",
-    "test",
-    "Gruntfile.js",
-    "**/.*"
+    "test"
   ],
   "dependencies": {},
   "devDependencies": {
