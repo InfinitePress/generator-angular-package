@@ -7,6 +7,8 @@ var path = require('path');
 var plumber = require('gulp-plumber');
 var runSequence = require('run-sequence');
 var jshint = require('gulp-jshint');
+var scss = require('gulp-scss');
+var concatCss = require('gulp-concat-css');
 
 /**
  * File patterns
@@ -27,6 +29,11 @@ var sourceFiles = [
   path.join(sourceDirectory, '/**/*.js')
 ];
 
+var stylesheets = [
+  path.join(sourceDirectory, '/**/*.css'),
+  path.join(sourceDirectory, '/**/*.scss')
+];
+
 var lintFiles = [
   'gulpfile.js',
   // Karma configuration
@@ -40,6 +47,15 @@ gulp.task('build', function() {
     .pipe(gulp.dest('./dist/'))
     .pipe(uglify())
     .pipe(rename('<%= config.yourModule.slugified %>.min.js'))
+    .pipe(gulp.dest('./dist'));
+});
+
+gulp.task('build-stylesheets', function() {
+  return gulp.src(stylesheets)
+    .pipe(plumber())
+    // .pipe(scss({ bundleExec: true }))
+    .pipe(scss())
+    .pipe(concatCss('<%= config.yourModule.slugified %>.css'))
     .pipe(gulp.dest('./dist'));
 });
 
@@ -57,6 +73,7 @@ gulp.task('watch', function () {
 
   // Watch JavaScript files
   gulp.watch(sourceFiles, ['process-all']);
+  gulp.watch([stylesheets], ['build-stylesheets']);
 });
 
 /**
@@ -101,5 +118,5 @@ gulp.task('test-dist-minified', function (done) {
 });
 
 gulp.task('default', function () {
-  runSequence('process-all', 'watch');
+  runSequence('process-all', 'build-stylesheets', 'watch');
 });
