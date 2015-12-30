@@ -1,13 +1,23 @@
 {
   "name": "<%= config.yourModule.slugified %>",
   "version": "0.1.0",
+  "description": "<%= config.description %>",
+  "keywords": <%= config.keywords %>,
   "authors": [
     {
       "name": "<%= config.author.name %>",
       "email": "<%= config.author.email %>"
     }
   ],
-  "main": ["dist/<%= config.yourModule.slugified %>.js"],
+  "repository": {
+    "type": "git",
+    "url": "<%= config.gitUrl %>"
+  },
+  "license": "<%= config.license %>",
+  "main": [
+    "dist/<%= config.yourModule.slugified %>.js",
+    "dist/<%= config.yourModule.slugified %>.css"
+    ],
   "ignore": [
     "src",
     "test",

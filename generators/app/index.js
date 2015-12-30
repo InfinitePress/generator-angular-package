@@ -4,6 +4,7 @@ var path = require('path');
 var yeoman = require('yeoman-generator');
 var yosay = require('yosay');
 var chalk = require('chalk');
+var _license;
 
 var AngModuleGenerator = yeoman.generators.Base.extend({
   initializing: function () {
@@ -12,6 +13,7 @@ var AngModuleGenerator = yeoman.generators.Base.extend({
     // Try to determine the name
     this.argument('appname', { type: String, required: false });
     this.appname = this.appname || path.basename(process.cwd());
+    this.description = 'This Angular components does ...';
   },
 
   prompting: function () {
@@ -61,6 +63,55 @@ var AngModuleGenerator = yeoman.generators.Base.extend({
         default: this.appname
       },
       {
+        type: 'input',
+        name: 'description',
+        message: 'One-line description of your module:',
+        validate: function (input) {
+          if (/.+/.test(input)) {
+            return true;
+          }
+          return 'Please enter a brief description of your module';
+        },
+        default: this.description
+      },
+      {
+        type: 'input',
+        name: 'keywords',
+        message: 'List of keywords for your module, separated by comma:',
+        validate: function (input) {
+          if (/.+/.test(input)) {
+            return true;
+          }
+          return 'Please enter a comma-separated list of keywords';
+        },
+        default: "angular, ng"
+      },
+      {
+        type: 'input',
+        name: 'gitUrl',
+        message: 'Your project\s Git URL:',
+        validate: function (input) {
+          if (/.+\..+/.test(input)) {
+            return true;
+          }
+          return 'Please enter a URL';
+        },
+        store: true,
+        default: ''
+      },
+      {
+        type: 'input',
+        name: 'license',
+        message: 'License identifier (see https://spdx.org/licenses/ for all choices):',
+        validate: function (input) {
+          if (/.+/.test(input)) {
+            return true;
+          }
+          return 'Please enter a license identifier';
+        },
+        default: "MIT"
+      },
+      {
         type: 'confirm',
         name: 'includeDirectives',
         message: 'Would you like to include a directives folder?',
@@ -106,7 +157,19 @@ var AngModuleGenerator = yeoman.generators.Base.extend({
 
     this.prompt(prompts, function (props) {
 
+      var keywords = props.keywords.split(/\s*,\s*/).map(function(kw) {
+        return '"' + kw + '"'
+      }).join(',')
+      keywords = '[' + keywords + ']'
+      _license = props.license
+
       this.props = {
+
+        moduleName: props.moduleName,
+        description: props.description,
+        gitUrl: props.gitUrl,
+        keywords: keywords,
+        license: props.license,
 
         author: {
           name: props.author,
@@ -243,7 +306,9 @@ var AngModuleGenerator = yeoman.generators.Base.extend({
      * Create LICENSE.txt
      */
     createLicenseTxt: function createLicenseTxt() {
-      this.template('LICENSE', 'LICENSE', {config: this.props});
+      if (_license === 'MIT') {
+        this.template('_LICENSE.mit', 'LICENSE', {config: this.props});
+      }
     },
 
     createProjectFiles: function createProjectFiles() {
@@ -257,6 +322,10 @@ var AngModuleGenerator = yeoman.generators.Base.extend({
 
   end: function () {
     this.installDependencies();
+
+    if (_license !== 'MIT') {
+      this.log('Be sure to visit https://spdx.org/licenses/ and copy the text of whatever license you have chosen to a file named ./LICENSE .')
+    }
   }
 });
 
