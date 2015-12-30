@@ -105,7 +105,15 @@ var DirectiveGenerator = yeoman.generators.NamedBase.extend({
   },
 
   renderDirectiveFile: function() {
-    this.template('directive.js', 'modules/' + this.slugifiedModuleName + '/directives/' + this.slugifiedName + '.directive.js')
+    this.template('directive.js', 'modules/' + this.slugifiedModuleName + '/directives/' + this.slugifiedName + '.directive.js');
+  },
+
+  renderScssFile: function() {
+    this.copy('directive.scss', 'modules/' + this.slugifiedModuleName + '/directives/' + this.slugifiedName + '.scss');
+  },
+
+  renderTemplateFile: function() {
+    this.template('directive.js', 'modules/' + this.slugifiedModuleName + '/directives/' + this.slugifiedName + '.tpl.html');
   }
 });
 
