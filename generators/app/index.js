@@ -251,6 +251,12 @@ var AngModuleGenerator = yeoman.generators.Base.extend({
       this.copy('jshintrc', '.jshintrc');
       this.copy('gitignore', '.gitignore');
       this.copy('travis.yml', '.travis.yml');
+    },
+
+    createExampleHtml: function createExampleHtml() {
+      this.template('example.html', 'example.html', {
+        appName: this.props.yourModule.slugified
+      });
     }
 
 },
