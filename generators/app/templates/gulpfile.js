@@ -7,6 +7,8 @@ var path = require('path');
 var plumber = require('gulp-plumber');
 var runSequence = require('run-sequence');
 var jshint = require('gulp-jshint');
+var scss = require('gulp-scss');
+var concatCss = require('gulp-concat-css');
 
 /**
  * File patterns
@@ -25,6 +27,11 @@ var sourceFiles = [
 
   // Then add all JavaScript files
   path.join(sourceDirectory, '/**/*.js')
+];
+
+var stylesheets = [
+  path.join(sourceDirectory, '/**/*.css'),
+  path.join(sourceDirectory, '/**/*.scss')
 ];
 
 var lintFiles = [
@@ -66,6 +73,7 @@ gulp.task('watch', function () {
 
   // Watch JavaScript files
   gulp.watch(sourceFiles, ['process-all']);
+  gulp.watch([stylesheets], ['build-stylesheets']);
 });
 
 /**
@@ -110,5 +118,5 @@ gulp.task('test-dist-minified', function (done) {
 });
 
 gulp.task('default', function () {
-  runSequence('process-all', 'watch');
+  runSequence('process-all', 'build-stylesheets', 'watch');
 });
