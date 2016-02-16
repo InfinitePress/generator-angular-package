@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html ng-app="app">
+<head>
+  <link rel="stylesheet" href="dist/<%= appName %>.css">
+  <script src="./bower/angular/angular.js"></script>
+  <script src="./dist/<%= appName %>.js"></script>
+  <script>
+  angular.module("app", ['my-module']);
+  .run(function($rootScope) {
+    $rootScope.something = 'value'
+  })
+  </script>
+</head>
+<body>
+  <p>Use this to demo your component/s.</p>
+  <my-directive></my-directive>
+</body>
+</html>
