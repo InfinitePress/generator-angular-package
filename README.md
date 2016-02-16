@@ -91,5 +91,13 @@ With this, you will have 2 files on dist folder:
 
 -`<<your project name>>.min.js`: builded version for production
 
+## Testing
+
+To run tests:
+
+    npm install -g mocha
+    cd ./tests
+    mocha
+
 ## License
 MIT
