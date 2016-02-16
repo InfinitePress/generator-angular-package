@@ -1,10 +1,17 @@
 {
   "name": "<%= config.yourModule.slugified %>",
   "version": "0.1.0",
+  "description": "<%= config.description %>",
+  "keywords": <%= config.keywords %>,
   "author": {
     "name": "<%= config.author.name %>",
     "email": "<%= config.author.email %>"
   },
+  "repository": {
+   "type": "git",
+   "url": "<%= config.gitUrl %>"
+  },
+  "license": "<%= config.license %>",
   "dependencies": {},
   "devDependencies": {
     "chai": "^1.9.1",
