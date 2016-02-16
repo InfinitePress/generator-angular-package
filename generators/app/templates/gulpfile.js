@@ -43,6 +43,15 @@ gulp.task('build', function() {
     .pipe(gulp.dest('./dist'));
 });
 
+gulp.task('build-stylesheets', function() {
+  return gulp.src(stylesheets)
+    .pipe(plumber())
+    // .pipe(scss({ bundleExec: true }))
+    .pipe(scss())
+    .pipe(concatCss('<%= config.yourModule.slugified %>.css'))
+    .pipe(gulp.dest('./dist'));
+});
+
 /**
  * Process
  */
@@ -63,7 +72,7 @@ gulp.task('watch', function () {
  * Validate source JavaScript
  */
 gulp.task('jshint', function () {
-  return gulp.src(lintFiles)
+  gulp.src(lintFiles)
     .pipe(plumber())
     .pipe(jshint())
     .pipe(jshint.reporter('jshint-stylish'))
