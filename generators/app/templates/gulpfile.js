@@ -9,6 +9,8 @@ var runSequence = require('run-sequence');
 var jshint = require('gulp-jshint');
 var scss = require('gulp-scss');
 var concatCss = require('gulp-concat-css');
+var templateCache = require('gulp-angular-templatecache');
+var eventStream = require('event-stream');
 
 /**
  * File patterns
@@ -34,14 +36,26 @@ var stylesheets = [
   path.join(sourceDirectory, '/**/*.scss')
 ];
 
+var templates = [
+  path.join(sourceDirectory, '/**/*.tpl.html')
+];
+
 var lintFiles = [
   'gulpfile.js',
   // Karma configuration
   'karma-*.conf.js'
 ].concat(sourceFiles);
 
+function getTemplateCache() {
+  return gulp.src(templates)
+    .pipe(plumber())
+    .pipe(templateCache({
+      module: '<%= config.yourModule.slugified %>.directives'
+    }));
+}
+
 gulp.task('build', function() {
-  gulp.src(sourceFiles)
+  return eventStream.merge(gulp.src(sourceFiles), getTemplateCache())
     .pipe(plumber())
     .pipe(concat('<%= config.yourModule.slugified %>.js'))
     .pipe(gulp.dest('./dist/'))
@@ -72,7 +86,7 @@ gulp.task('process-all', function (done) {
 gulp.task('watch', function () {
 
   // Watch JavaScript files
-  gulp.watch(sourceFiles, ['process-all']);
+  gulp.watch([sourceFiles, templates], ['process-all']);
   gulp.watch([stylesheets], ['build-stylesheets']);
 });
 
