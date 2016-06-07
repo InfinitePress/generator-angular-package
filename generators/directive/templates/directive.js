@@ -6,7 +6,7 @@ angular.module('<%= slugifiedModuleName %>').directive('<%= camelizedName %>', [
   function() {
     return {
       //template: '<div></div>',
-      templateUrl: '/modules/<%= slugifiedModuleName %>/directives/<%= slugifiedName %>/<%= slugifiedName %>.tpl.html'
+      templateUrl: '/modules/<%= slugifiedModuleName %>/directives/<%= slugifiedName %>/<%= slugifiedName %>.tpl.html',
       restrict: '<%= restrict %>',
       replace: <%= replaceContent %>,
       scope: <% if (scopeType == 'parent') {%> false <%} else if (scopeType == 'child') {%> true <%} else if (scopeType == 'isolated') {%>{}<%}%>,
