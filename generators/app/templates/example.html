@@ -5,14 +5,18 @@
   <script src="./bower/angular/angular.js"></script>
   <script src="./dist/<%= appName %>.js"></script>
   <script>
-  angular.module("app", ['my-module']);
-  .run(function($rootScope) {
-    $rootScope.something = 'value'
-  })
+  angular.module("app", ['<%= appName %>']);
+      .run(function($rootScope) {
+          $rootScope.something = 'value'
+      }).controller('TesterCtrl', function($scope) {
+          console.log('Tester Controller loaded.');
+      });
   </script>
 </head>
-<body>
-  <p>Use this to demo your component/s.</p>
-  <my-directive></my-directive>
+<body >
+  <div ng-controller="TesterCtrl">
+    <p>Use this to demo your component/s.</p>
+    <my-directive></my-directive>
+  </div>
 </body>
 </html>
