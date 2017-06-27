@@ -8,8 +8,8 @@
     "email": "<%= config.author.email %>"
   },
   "repository": {
-   "type": "git",
-   "url": "<%= config.gitUrl %>"
+    "type": "git",
+    "url": "<%= config.gitUrl %>"
   },
   "license": "<%= config.license %>",
   "dependencies": {},
@@ -21,6 +21,7 @@
     "gulp-angular-templatecache": "^1.8.0",
     "gulp-concat": "^2.3.4",
     "gulp-concat-css": "^2.2.0",
+    "gulp-htmlmin": "^3.0.0",
     "gulp-jshint": "^2.0.1",
     "gulp-plumber": "^1.1.0",
     "gulp-rename": "^1.2.0",

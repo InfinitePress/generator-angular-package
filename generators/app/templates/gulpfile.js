@@ -9,6 +9,7 @@ var runSequence = require('run-sequence');
 var jshint = require('gulp-jshint');
 var sass = require('gulp-sass');
 var concatCss = require('gulp-concat-css');
+var htmlmin = require('gulp-htmlmin');
 var templateCache = require('gulp-angular-templatecache');
 var eventStream = require('event-stream');
 var webserver = require('gulp-webserver');
@@ -50,12 +51,15 @@ var lintFiles = [
 function getTemplateCache() {
     return gulp.src(templates)
         .pipe(plumber())
+        .pipe(htmlmin({ collapseWhitespace: true }))
         .pipe(templateCache({
-            module: '<%= config.yourModule.slugified %>.directives'
+            module: '<%= config.yourModule.slugified %>.directives',
+            standalone: true,
+            root: '/modules/',
         }));
 }
 
-gulp.task('build', function() {
+gulp.task('build', function () {
     return eventStream.merge(gulp.src(sourceFiles), getTemplateCache())
         .pipe(plumber())
         .pipe(concat('<%= config.yourModule.slugified %>.js'))
@@ -65,7 +69,7 @@ gulp.task('build', function() {
         .pipe(gulp.dest('./dist'));
 });
 
-gulp.task('build-stylesheets', function() {
+gulp.task('build-stylesheets', function () {
     return gulp.src(stylesheets)
         .pipe(plumber())
         // .pipe(scss({ bundleExec: true }))
@@ -77,14 +81,14 @@ gulp.task('build-stylesheets', function() {
 /**
  * Process
  */
-gulp.task('process-all', function(done) {
+gulp.task('process-all', function (done) {
     runSequence('jshint', 'test-src', 'build', done);
 });
 
 /**
  * Watch task
  */
-gulp.task('watch', function() {
+gulp.task('watch', function () {
 
     // Watch JavaScript files
     gulp.watch([sourceFiles, templates], ['process-all']);
@@ -94,7 +98,7 @@ gulp.task('watch', function() {
 /**
  * Validate source JavaScript
  */
-gulp.task('jshint', function() {
+gulp.task('jshint', function () {
     gulp.src(lintFiles)
         .pipe(plumber())
         .pipe(jshint())
@@ -105,7 +109,7 @@ gulp.task('jshint', function() {
 /**
  * Run test once and exit
  */
-gulp.task('test-src', function(done) {
+gulp.task('test-src', function (done) {
     new Server({
         configFile: __dirname + '/karma-src.conf.js',
         singleRun: true
@@ -115,7 +119,7 @@ gulp.task('test-src', function(done) {
 /**
  * Run test once and exit
  */
-gulp.task('test-dist-concatenated', function(done) {
+gulp.task('test-dist-concatenated', function (done) {
     new Server({
         configFile: __dirname + '/karma-dist-concatenated.conf.js',
         singleRun: true
@@ -125,14 +129,14 @@ gulp.task('test-dist-concatenated', function(done) {
 /**
  * Run test once and exit
  */
-gulp.task('test-dist-minified', function(done) {
+gulp.task('test-dist-minified', function (done) {
     new Server({
         configFile: __dirname + '/karma-dist-minified.conf.js',
         singleRun: true
     }, done).start();
 });
 
-gulp.task('webserver', function() {
+gulp.task('webserver', function () {
     gulp.src('./')
         .pipe(webserver({
             host: 'localhost',
@@ -143,6 +147,6 @@ gulp.task('webserver', function() {
         }));
 });
 
-gulp.task('default', function() {
+gulp.task('default', function () {
     runSequence('process-all', 'build-stylesheets', 'watch', 'webserver');
 });
